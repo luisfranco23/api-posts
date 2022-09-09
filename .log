@@ -1,0 +1,9 @@
+Esto funciona para manjaro Linux,
+
+
+-- iniciar el servicio de postgresql
+1. systemctl status postgresql  --para ver el estado
+2. ejecutar sudo su
+3. su - postgres -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+4. sudo systemctl start postgresql.service desde usuario sin privilegios
+5. sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'password deseable';" esto sirve para cambiar la password

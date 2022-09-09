@@ -38,23 +38,50 @@ const getPostsById = (id) => {
 
 
 const createNewUser = (data) => {
-    if (data) {
+    const filterUser = dbUsers.filter(item => item.email === data.email)
+    if(!filterUser){
         const newUser = {
-            id: uuid.v4(),
-            name: data.name,
-            email: data.email,
-            password: hashedPassword(data.password),
-            phone: data.phone
-        }
-        dbUsers.push(newUser)
-        return newUser
+        id: uuid.v4(),
+                name: data.name,
+                email: data.email,
+                password: hashedPassword(data.password),
+                phone: data.phone
+            }
+            dbUsers.push(newUser)
+            return newUser
     }else{
         return false
     }
 }
+
+
+const createNewPost = (data, userId) => {
+    if (data && userId) {
+        const newPost = {
+            id: uuid.v4(),
+            title: data.title,
+            content: data.content,
+            headerImg: data.headerImage,
+            userId: userId,
+            published: true
+        }
+        dbPosts.push(newPost)
+        return newPost
+    }else{
+        return false
+    }
+}
+
+const getMePosts = (id) =>{
+    const filterPosts = dbPosts.filter(item => item.userId === id)
+    return filterPosts[0]
+}
+
 module.exports =  {
     getAllPost,
     createNewUser,
     getPostsById,
-    getUserByEmail
+    getUserByEmail,
+    createNewPost,
+    getMePosts
 }

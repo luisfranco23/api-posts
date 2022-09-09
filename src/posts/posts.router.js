@@ -7,14 +7,16 @@ const router = require('express').Router()
 
 router.route('/')
     .get(httpPosts.getAll)
+    .post(passport.authenticate('jwt', {session: false}),httpPosts.newPostUser)
 
 
 router.route('/register')
     .post(httpPosts.createUser)
 
-router.get(('/ejemplo'),passport.authenticate('jwt', {session: false}) , (req, res) => {
-    res.status(200).json({message: 'Hi', email: req.user.id})
-})
+
+router.get('/me/posts', passport.authenticate('jwt', {session: false}), httpPosts.getMePostId)
+
+
 router.route('/:id')
     .get(httpPosts.getPostsId)
 

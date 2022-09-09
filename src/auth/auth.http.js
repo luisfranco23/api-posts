@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { authLoggin } = require("./auth.controller")
+const entorno = require('../utils/config')
 
 const loggin = (req, res) => {
     const data = req.body
@@ -12,7 +13,7 @@ const loggin = (req, res) => {
         const token = jwt.sign({
             id: response.id,
             email: response.email,
-        }, 'posts')
+        }, entorno.secretSTring)
         return res.status(200).json({message: 'loggin succes', token})
     }else{
         return res.status(401).json({message: 'Invalid credentials'})
