@@ -4,14 +4,14 @@ const { hashedPassword } = require('../utils/bcrypt')
 const dbUsers = [
     {
         id: '60b7b5eb-6967-42fe-a0d2-edfffbfe69bb',
-        name: 'Luis Franco',
+        name: 'Luis L',
         email: 'luis@gmail.com',
         password: '$2b$10$34vcAYlmUCOJfGKajt9g.O77ST7qPYcXrvVtIa9iFLGpP67JfSM0K',
         phone: '300100100'
     },
     {
         id: 'd5f606a4-ea34-445e-a183-59f80b096edd',
-        name: 'Luis',
+        name: 'Luis F',
         email: 'luis123@gmail.com',
         password: '$2b$10$y2obr1HwOfcA6c5.Usf84.c6u4gOmc/eBy6omAsB.N0o0uP7ltSau',
         phone: '300100100'
@@ -37,8 +37,8 @@ const dbPosts = [
     },
     {
         id: '902f8c73-5dee-46e3-876a-ae443343aeaf',
-        title: 'Todo sobre JWT',
-        content: 'Jsonwebtoken',
+        title: 'Conoce mas sobre passport',
+        content: 'Rutas protegidas con passport',
         headerImg: 'url_to_img',
         userId: 'd5f606a4-ea34-445e-a183-59f80b096edd',
         published: true
