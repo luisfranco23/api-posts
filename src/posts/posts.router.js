@@ -13,10 +13,6 @@ router.route('/')
 router.route('/register')
     .post(httpPosts.createUser)
 
-
-router.get('/me/posts', passport.authenticate('jwt', {session: false}), httpPosts.getMePostId)
-
-
 router.route('/:id')
     .get(httpPosts.getPostsId)
 

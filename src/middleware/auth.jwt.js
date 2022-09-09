@@ -8,7 +8,6 @@ module.exports = (passport) => {
     };
     passport.use(
         new JwtStrategy(opts, (decoded, done) => {
-            console.log("decoded jwt", decoded);
             return done(null, decoded); // decoded sera el que retornaremos cuando se ejecute exitosamente la autenticacion
         })
     );

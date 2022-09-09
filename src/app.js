@@ -9,7 +9,7 @@ app.use(express.json())
 
 
 app.use('/api/v1/posts',servicePost)
-app.use('/api/v1/posts', serviceAuth)
+app.use('/api/v1/users', serviceAuth)
 
 app.listen(entorno.port, () => {
     console.log(`Server started ${entorno.port}`)

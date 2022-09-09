@@ -8,6 +8,13 @@ const dbUsers = [
         email: 'luis@gmail.com',
         password: '$2b$10$34vcAYlmUCOJfGKajt9g.O77ST7qPYcXrvVtIa9iFLGpP67JfSM0K',
         phone: '300100100'
+    },
+    {
+        id: 'd5f606a4-ea34-445e-a183-59f80b096edd',
+        name: 'Luis',
+        email: 'luis123@gmail.com',
+        password: '$2b$10$y2obr1HwOfcA6c5.Usf84.c6u4gOmc/eBy6omAsB.N0o0uP7ltSau',
+        phone: '300100100'
     }
 ]
 
@@ -18,6 +25,22 @@ const dbPosts = [
         content: 'Todo lo que tienes que saber sobre una API REST',
         headerImg: 'url_to_img',
         userId: '60b7b5eb-6967-42fe-a0d2-edfffbfe69bb',
+        published: true
+    },
+    {
+        id: '2fee3282-7210-4967-a932-08617180ec49',
+        title: 'Todo sobre JWT',
+        content: 'Jsonwebtoken',
+        headerImg: 'url_to_img',
+        userId: '60b7b5eb-6967-42fe-a0d2-edfffbfe69bb',
+        published: true
+    },
+    {
+        id: '902f8c73-5dee-46e3-876a-ae443343aeaf',
+        title: 'Todo sobre JWT',
+        content: 'Jsonwebtoken',
+        headerImg: 'url_to_img',
+        userId: 'd5f606a4-ea34-445e-a183-59f80b096edd',
         published: true
     }
 ]
@@ -74,7 +97,44 @@ const createNewPost = (data, userId) => {
 
 const getMePosts = (id) =>{
     const filterPosts = dbPosts.filter(item => item.userId === id)
-    return filterPosts[0]
+    return filterPosts
+}
+
+const getPostMeById = (userId, postId) => {
+    const filter = dbPosts.filter(item => item.userId === userId && item.id === postId)
+    if (!filter) {
+        return false
+    }else{
+        return filter[0]
+    }
+}
+
+const editPosts = (id, data) => {
+    const index = dbPosts.findIndex(item => item.id === id)
+    const filter = dbPosts.filter(item => item.id === id)
+    if (!(index == -1)) {
+        dbPosts[index] = {
+         id: filter[0].id,
+         title: data.title,
+         content: data.content,
+         headerImg: data ? data.headerImage : filter[0].headerImg,
+         userId: filter[0].userId,
+         published: data ? data.published : true
+        }
+        return dbPosts[index]
+    }else{
+        return false
+    }
+}
+
+
+const deletePostById = (id, userId) => {
+    const index = dbPosts.findIndex(item => item.id === id && item.userId === userId)
+    if (!(index === -1)) {
+        return dbPosts.splice(index,1)
+    }else{
+        return false
+    }
 }
 
 module.exports =  {
@@ -83,5 +143,8 @@ module.exports =  {
     getPostsById,
     getUserByEmail,
     createNewPost,
-    getMePosts
+    getMePosts,
+    getPostMeById,
+    editPosts,
+    deletePostById
 }

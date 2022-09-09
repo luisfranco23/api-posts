@@ -1,1 +1,20 @@
+// Rutas definidas para peticiones correctas en API-BLOG
 
+// 1. /api/v1/posts
+//     get posts
+//     post => ruta protegida para crear posts
+
+// 2. /api/v1/posts/:id
+//     get por id de posts
+
+// 3. /api/v1/users/me/posts
+        // get => Ver unicamente los posts del usuario loggeado
+
+// 4. /api/v1/posts/register
+//     post => crear nuevo usuario
+
+// 5. /api/v1/users/login
+//      post => login del usuario
+
+// 6. /api/v1/users
+    
